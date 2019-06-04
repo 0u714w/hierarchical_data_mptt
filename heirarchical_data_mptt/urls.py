@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from heirarchical_data_mptt.models import Filer
+from mptt.admin import DraggableMPTTAdmin
+from heirarchical_data_mptt.views import main_view, add_file
+
+
+admin.site.register(Filer, DraggableMPTTAdmin)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', main_view),
+    path('newfile/', add_file)
 ]
